@@ -5,6 +5,7 @@ ave_stretch1 = zeros(2,1);
 ave_stretch2 = zeros(2,1);
 ave_stretch3 = zeros(2,1);
 ave_stretch_sum = zeros(2,1);
+ave_stretch_ave = zeros(2,1);
 ave_x1 = zeros(2,1);
 ave_x2 = zeros(2,1);
 ave_x3 = zeros(2,1);
@@ -20,6 +21,8 @@ angle3 = zeros(2,1);
 distance1 = zeros(2,1);
 distance2 = zeros(2,1);
 distance3 = zeros(2,1);
+
+start = (min(raw_pressure) - 0.1) * 10;
 
 for i=1:length(raw_pressure)
     ave_counts((raw_pressure(i) * 10) - start) = 0;
@@ -77,4 +80,5 @@ for i=1:length(ave_pressure)
     distance3(i) = sqrt((ave_x4(i) - ave_x3(i))^2 + (ave_y4(i) - ave_y3(i))^2);
     
     ave_stretch_sum(i) = ave_stretch1(i) + ave_stretch2(i) + ave_stretch3(i);
+    ave_stretch_ave(i) = ave_stretch_sum(i) / 3;
 end
